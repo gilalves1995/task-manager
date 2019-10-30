@@ -10,21 +10,6 @@ mongoose.connect(connectionURL, {
 });
 
 
-// Define the mongoose model for the tasks
-const Task = mongoose.model('Task', {
-    description: {
-        type: String,
-        required: true,
-        trim: true
-    },
-    completed: {
-        type: Boolean,
-        required: false,
-        default: false
-    }
-});
-
-
 // An instance of the previously defined model - mongoose grabs the User, makes it lower case and pluralizes it (users is the name of the collection)
 
 /*
@@ -46,12 +31,6 @@ me.save().then(me => {
 });
 */
 
-
-// Save the Task instance in the database
-const task = new Task({
-    description: 'Drive children to school',
-
-});
 
 /*
 
