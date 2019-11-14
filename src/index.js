@@ -11,7 +11,6 @@ const PORT = process.env.PORT || 3000;
 // Parses incoming json data to an object
 app.use(express.json());
 
-
 // Registers the user router (methods to manage the User resource)
 app.use(userRouter);
 
@@ -19,7 +18,21 @@ app.use(userRouter);
 app.use(taskRouter);
 
 
-
 app.listen(3000, () => {
     console.log(`Server is running on port ${PORT}.`);
 });
+
+// Securing password
+const bcrypt = require('bcryptjs');
+
+const myFunction = async() => {
+    const password = 'Red12345!';
+
+    // Second argument is the number of rounds
+    const hashedPassword = await bcrypt.hash(password, 8);
+    const isMatch = await bcrypt.compare('Red12345!', hashedPassword);
+    console.log(isMatch);
+};
+
+myFunction();
+
