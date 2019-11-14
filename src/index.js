@@ -74,6 +74,30 @@ app.get('/users/:id', async (req, res) => {
     */
 });
 
+// Updates a user
+app.patch('/users/:id', async (req, res) => {
+    const updates = Object.keys(req.body);
+    const allowedUpdates = ['name', 'email', 'password', 'age'];
+    const isValidOperation = updates.every(update => allowedUpdates.includes(update));
+
+    if (!isValidOperation) {
+        return res.status(400).send({ error: 'Invalid update' });
+    }
+
+    try {
+        const user = await User.findByIdAndUpdate(req.params.id, req.body, { new: true, runValidators: true });
+        if (!user) {
+            return res.status(404).send();
+        }
+        res.status(200).send(user);
+    } catch(error) {
+        // 500 (internal server error) or 400 (bad request)
+        res.status(400).send(error);
+    }
+});
+
+
+
 // Adds a new task
 app.post('/tasks', async (req, res) => {
     const task = new Task(req.body);
