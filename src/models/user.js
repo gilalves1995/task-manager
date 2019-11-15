@@ -1,7 +1,8 @@
 const mongoose = require('mongoose');
 const validator = require('validator');
+const bcrypt = require('bcryptjs');
 
-const User = mongoose.model('User', {
+const userSchema = new mongoose.Schema({
     name: {
         type: String,
         required: true,
@@ -40,4 +41,21 @@ const User = mongoose.model('User', {
     }
 });
 
+// Middleware: pre() triggers a function before an event
+// The first argument is the event
+// The second argument is the function to be called
+
+userSchema.pre('save', async function(next) {
+    const user = this;
+    if (user.isModified('password')) {
+        user.password = await bcrypt.hash(user.password, 8);
+    }
+    // Call next when we are done - if we never call it, it will hang forever thinking we are still running some code before saving the user
+    next();
+});
+
+const User = mongoose.model('User', userSchema);
+
 module.exports = User;
+
+// Middleware - customize functions to run every time a given event occurs

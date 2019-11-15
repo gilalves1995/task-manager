@@ -22,7 +22,9 @@ app.listen(3000, () => {
     console.log(`Server is running on port ${PORT}.`);
 });
 
-// Securing password
+
+
+/* Securing password
 const bcrypt = require('bcryptjs');
 
 const myFunction = async() => {
@@ -35,4 +37,5 @@ const myFunction = async() => {
 };
 
 myFunction();
+*/
 
