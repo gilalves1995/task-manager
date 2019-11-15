@@ -8,14 +8,29 @@ require('./db/mongoose.js');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// Parses incoming json data to an object
+/*
+app.use((req, res, next) => {
+    if (req.method === 'GET') {
+        res.send('GET requests are disabled');
+    } else {
+        next();
+    }
+});
+*/
+
+// Register middleware function to disable all requests
+app.use((req, res, next) => {
+    res.status(503).send('Service is temporarily unavailable.');
+});
+
 app.use(express.json());
-
-// Registers the user router (methods to manage the User resource)
 app.use(userRouter);
-
-// Registers the task router (methods to manage the Task resource)
 app.use(taskRouter);
+
+
+// Express Middleware
+// Without: new request -> run route handler
+// With: new request -> do something -> run route handler
 
 
 app.listen(3000, () => {
