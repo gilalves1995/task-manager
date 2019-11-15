@@ -8,6 +8,10 @@ require('./db/mongoose.js');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+// Express Middleware
+// Without: new request -> run route handler
+// With: new request -> do something -> run route handler
+
 /*
 app.use((req, res, next) => {
     if (req.method === 'GET') {
@@ -19,19 +23,15 @@ app.use((req, res, next) => {
 */
 
 // Register middleware function to disable all requests
+/*
 app.use((req, res, next) => {
     res.status(503).send('Service is temporarily unavailable.');
 });
+*/
 
 app.use(express.json());
 app.use(userRouter);
 app.use(taskRouter);
-
-
-// Express Middleware
-// Without: new request -> run route handler
-// With: new request -> do something -> run route handler
-
 
 app.listen(3000, () => {
     console.log(`Server is running on port ${PORT}.`);
