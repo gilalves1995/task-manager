@@ -10,6 +10,7 @@ const userSchema = new mongoose.Schema({
     },
     email: {
         type: String,
+        unique: true,   // Emails must be unique
         required: true,
         trim: true,
         lowercase: true,
@@ -25,7 +26,6 @@ const userSchema = new mongoose.Schema({
             if (value < 0) {
                 throw new Error('Age must be a positive number.');
             }
-
         }
     },
     password: {
@@ -41,10 +41,19 @@ const userSchema = new mongoose.Schema({
     }
 });
 
-// Middleware: pre() triggers a function before an event
-// The first argument is the event
-// The second argument is the function to be called
+userSchema.statics.findByCredentials = async(email, password) => {
+    const user = await User.findOne({ email });
+    if (!user)
+        throw new Error('Unable to log in.');
 
+    const isMatch = await bcrypt.compare(password, user.password);
+    if (!isMatch)
+        throw new Error('Unable to log in.');
+
+    return user;
+};
+
+// Hash the password before saving
 userSchema.pre('save', async function(next) {
     const user = this;
     if (user.isModified('password')) {
