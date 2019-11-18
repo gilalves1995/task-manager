@@ -12,7 +12,9 @@ const auth = async(req, res, next) => {
             throw new Error();
         }
 
+        // These properties are accessible inside the route handler
         req.user = user;
+        req.token = token;
         next();
     } catch(error) {
         res.status(401).send({ error: 'Please authenticate.' });
