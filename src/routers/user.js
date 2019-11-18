@@ -82,7 +82,7 @@ router.get('/users', auth, async (req,res) => {
 */
 
 
-// Fetches a user by id
+/*
 router.get('/users/:id', async (req, res) => {
     const _id = req.params.id;
 
@@ -96,7 +96,7 @@ router.get('/users/:id', async (req, res) => {
         res.status(500).send(error);
     }
 
-    /*
+    // Old version
     User.findById(_id).then(user => {
         if (!user) {
             return res.status(404).send();
@@ -105,11 +105,12 @@ router.get('/users/:id', async (req, res) => {
     }).catch(error => {
         res.status(500).send(error);
     });
-    */
+
 });
+*/
 
 // Updates a user
-router.patch('/users/:id', async (req, res) => {
+router.patch('/users/me', auth, async (req, res) => {
     const updates = Object.keys(req.body);
     const allowedUpdates = ['name', 'email', 'password', 'age'];
     const isValidOperation = updates.every(update => allowedUpdates.includes(update));
@@ -122,15 +123,11 @@ router.patch('/users/:id', async (req, res) => {
         // findByIdAndUpdate bypasses middleware and the password is not hashed
 
         // const user = await User.findByIdAndUpdate(req.params.id, req.body, { new: true, runValidators: true });
-        const user = await User.findById(req.params.id);
-        updates.forEach(update => user[update] = req.body[update]);
-        await user.save();
+        // const user = await User.findById(req.params.id);
+        updates.forEach(update => req.user[update] = req.body[update]);
+        await req.user.save();
+        res.status(200).send(req.user);
 
-
-        if (!user) {
-            return res.status(404).send();
-        }
-        res.status(200).send(user);
     } catch(error) {
         // 500 (internal server error) or 400 (bad request)
         res.status(400).send(error);
@@ -138,14 +135,17 @@ router.patch('/users/:id', async (req, res) => {
 });
 
 // Deletes a user
-router.delete('/users/:id', async (req, res) => {
-    const _id = req.params.id;
+router.delete('/users/me', auth, async (req, res) => {
     try {
-        const user = await User.findByIdAndDelete(_id);
+        /*
+        const user = await User.findByIdAndDelete(req.user._id);
         if (!user) {
             return res.status(404).send({ error: 'User does not exist!' });
         }
-        res.status(200).send(user);
+        */
+        await req.user.remove();
+
+        res.status(200).send(req.user);
     } catch(error) {
         res.status(500).send(error);
     }
