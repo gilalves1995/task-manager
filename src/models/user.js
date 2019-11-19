@@ -58,6 +58,14 @@ userSchema.methods.toJSON = function() {
     return userObject;
 };
 
+// Virtual property (or attribute) - not actual data stored - relationship between entities (user and task)
+// Not changing what is stored in the DB (just a way for mongoose to figure ot how ar ethese 2 things related)
+userSchema.virtual('tasks', {
+    ref: 'Task',
+    localField: '_id',
+    foreignField: 'owner'
+});
+
 
 userSchema.methods.generateAuthToken = async function() {
     const user = this;
