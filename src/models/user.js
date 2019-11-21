@@ -47,6 +47,9 @@ const userSchema = new mongoose.Schema({
             required: true,
         }
     }]
+}, {
+    // Schema options
+    timestamps: true
 });
 
 userSchema.methods.toJSON = function() {
