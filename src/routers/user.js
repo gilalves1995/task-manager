@@ -1,7 +1,15 @@
 const express = require('express');
 const User = require('../models/user');
 const auth = require('../middleware/auth');
+const multer = require('multer');
+
 const router = express.Router();
+
+// User profile picture is stored in "avatars" directory
+const avatarUpload = multer({
+    dest: 'avatars'
+});
+
 
 // Adds a new user
 router.post('/users', async (req, res) => {
@@ -150,5 +158,12 @@ router.delete('/users/me', auth, async (req, res) => {
         res.status(500).send(error);
     }
 });
+
+// Uploads a profile picture
+router.post('/users/me/avatar', avatarUpload.single('avatar'), (req, res) => {
+    res.send();
+});
+
+
 
 module.exports = router;

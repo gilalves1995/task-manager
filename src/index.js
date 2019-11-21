@@ -1,4 +1,5 @@
 const express = require('express');
+
 const userRouter = require('./routers/user');
 const taskRouter = require('./routers/task');
 
@@ -7,6 +8,19 @@ require('./db/mongoose.js');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
+
+// File upload example
+const multer = require('multer');
+const upload = multer({
+    dest: 'images',
+
+});
+
+app.post('/upload', upload.single('upload'), (req, res) => {
+    res.send();
+});
+
+
 
 // Express Middleware
 // Without: new request -> run route handler
