@@ -1,0 +1,5 @@
+Mongo and Mongoose (database connection, models)
+Express (routers, middleware)
+Filtering data
+Pagination
+

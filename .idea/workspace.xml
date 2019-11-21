@@ -20,8 +20,18 @@
       <file leaf-file-name="task.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/routers/task.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="362">
-              <caret line="43" column="37" lean-forward="true" selection-start-line="43" selection-start-column="37" selection-end-line="43" selection-end-column="37" />
+            <state relative-caret-position="465">
+              <caret line="46" column="46" lean-forward="true" selection-start-line="46" selection-start-column="46" selection-end-line="46" selection-end-column="46" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="concepts.txt" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/concepts.txt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="13">
+              <caret line="1" column="29" lean-forward="false" selection-start-line="1" selection-start-column="29" selection-end-line="1" selection-end-column="29" />
               <folding />
             </state>
           </provider>
@@ -46,6 +56,7 @@
         <option value="$PROJECT_DIR$/src/models/user.js" />
         <option value="$PROJECT_DIR$/src/index.js" />
         <option value="$PROJECT_DIR$/src/models/task.js" />
+        <option value="$PROJECT_DIR$/concepts.txt" />
         <option value="$PROJECT_DIR$/src/routers/task.js" />
       </list>
     </option>
@@ -168,12 +179,12 @@
       <workItem from="1572889868310" duration="21911000" />
       <workItem from="1574001044421" duration="150000" />
       <workItem from="1574069703835" duration="5398000" />
-      <workItem from="1574157874794" duration="19851000" />
+      <workItem from="1574157874794" duration="21185000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="70996000" />
+    <option name="totallyTimeSpent" value="72330000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1680" height="1050" extended-state="0" />
@@ -574,10 +585,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/concepts.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="13">
+          <caret line="1" column="29" lean-forward="false" selection-start-line="1" selection-start-column="29" selection-end-line="1" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/routers/task.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="362">
-          <caret line="43" column="37" lean-forward="true" selection-start-line="43" selection-start-column="37" selection-end-line="43" selection-end-column="37" />
+        <state relative-caret-position="465">
+          <caret line="46" column="46" lean-forward="true" selection-start-line="46" selection-start-column="46" selection-end-line="46" selection-end-column="46" />
           <folding />
         </state>
       </provider>
