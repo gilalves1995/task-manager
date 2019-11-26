@@ -10,6 +10,8 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 // File upload example
+
+/*
 const multer = require('multer');
 const upload = multer({
     dest: 'images',
@@ -35,6 +37,7 @@ app.post('/upload', upload.single('upload'), (req, res) => {
 }, (error, req, res, next) => {
     res.status(400).send({ error: error.message });
 });
+*/
 
 
 
