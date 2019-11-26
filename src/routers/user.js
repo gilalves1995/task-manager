@@ -7,7 +7,15 @@ const router = express.Router();
 
 // User profile picture is stored in "avatars" directory
 const avatarUpload = multer({
-    dest: 'avatars'
+    limits: {
+        fileSize: 1000000
+    },
+    fileFilter(req, file, cb) {
+        if (!file.originalname.match(/\.(jpg|jpeg|png)$/)) {
+            cb(new Error('File must be .jpg, .jpeg or png'));
+        }
+        cb(undefined, true);
+    }
 });
 
 
@@ -160,8 +168,21 @@ router.delete('/users/me', auth, async (req, res) => {
 });
 
 // Uploads a profile picture
-router.post('/users/me/avatar', avatarUpload.single('avatar'), (req, res) => {
-    res.send();
+router.post('/users/me/avatar', auth, avatarUpload.single('avatar'), async (req, res) => {
+
+    req.user.avatar = req.file.buffer;
+    await req.user.save();
+
+    res.status(200).send();
+}, (error, req, res, next) => {
+    res.status(400).send({ error: error.message });
+});
+
+// Delete profile picture
+router.delete('/users/me/avatar', auth, async (req, res) => {
+    req.user.avatar = undefined;
+    await req.user.save();
+    res.status(200).send();
 });
 
 
