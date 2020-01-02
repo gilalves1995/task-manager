@@ -3,7 +3,9 @@
 
 const mongoose = require('mongoose');
 
-mongoose.connect(process.env.MONGODB_URL, {
+const mongodbUrl = process.env.MONGODB_URL.toString();
+
+mongoose.connect(mongodbUrl, {
     useNewUrlParser: true,
     useCreateIndex: true,
     useFindAndModify: false

@@ -7,3 +7,13 @@ Sending Emails
 Environment Variables: security and customizability
 - Example: MongoDB connection url is a string with the local address and we may want to use it in production (heroku)
 or development (local)
+
+
+Deploy to heroku
+1) heroku create gilalves-task-manager
+2) heroku config:set key=value (to set environment variables)
+    heroku config:set JWT_SECRET=UIN389RJ43RDSF SENDGRID_API_KEY=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 MONGODB_URL=mongodb+srv://taskmanagerapp:Mnr19PnDhh7FU1ty@cluster0-fltvi.mongodb.net/task-manager-api?retryWrites=true&w=majority
+
+    PORT is managed by heroku
+
+3) git push heroku master
