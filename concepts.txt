@@ -2,4 +2,8 @@ Mongo and Mongoose (database connection, models)
 Express (routers, middleware)
 Filtering data
 Pagination
+Sending Emails
 
+Environment Variables: security and customizability
+- Example: MongoDB connection url is a string with the local address and we may want to use it in production (heroku)
+or development (local)
