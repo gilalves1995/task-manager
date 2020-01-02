@@ -68,7 +68,7 @@ router.post('/users/logoutAll', auth, async (req, res) => {
     try {
         req.user.tokens = [];
         await req.user.save();
-        req.status(200).send();
+        res.status(200).send();
     } catch(error) {
         res.status(500).send(error);
     }

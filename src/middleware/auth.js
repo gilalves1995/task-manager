@@ -9,6 +9,7 @@ const auth = async(req, res, next) => {
 
         console.log("Token: ", token);
         if (!user) {
+            console.log("Found user? : ", user);
             throw new Error();
         }
 
