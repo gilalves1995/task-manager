@@ -66,7 +66,7 @@ app.use(express.json());
 app.use(userRouter);
 app.use(taskRouter);
 
-app.listen(3000, () => {
+app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}.`);
 });
 
