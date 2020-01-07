@@ -3,6 +3,7 @@ Express (routers, middleware)
 Filtering data
 Pagination
 Sending Emails
+Testing (Mocha and Jest)
 
 Environment Variables: security and customizability
 - Example: MongoDB connection url is a string with the local address and we may want to use it in production (heroku)
@@ -19,5 +20,4 @@ Deploy to heroku
 3) git push heroku master
 
 
-eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZTBlM2I1MDVlZjI4MTY4M2RjMGIwOGQiLCJpYXQiOjE1Nzc5OTA5OTN9.h4_hbj5zURp76oT14Eqi-_3-VLTHzWaWcAM5Sg6D_lo
-eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZTBlM2I1MDVlZjI4MTY4M2RjMGIwOGQiLCJpYXQiOjE1Nzc5OTA5OTN9.h4_hbj5zURp76oT14Eqi-_3-VLTHzWaWcAM5Sg6D_lo
+
